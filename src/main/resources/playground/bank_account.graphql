@@ -10,7 +10,7 @@ query GET_BANK_ACCOUNT($id: ID) {
 }
 
 mutation CREATE_BANK_ACCOUNT{
-    createBankAccount(input: {lastname: "", firstname: ""}){
+    createBankAccount(input: {lastname: "", firstname: "", age: -1}){
         id,
         currency,
         client {
