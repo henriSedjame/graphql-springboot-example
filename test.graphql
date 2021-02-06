@@ -1,0 +1,9 @@
+{
+    bankAccount(id: "5237532e-20ed-4b43-8320-fb9ecf64e488"){
+        id
+        currency
+        client {
+            lastname
+        }
+    }
+}

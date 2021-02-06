@@ -1,0 +1,21 @@
+query GET_BANK_ACCOUNT($id: ID) {
+    bankAccount(id: $id){
+        id
+        currency
+        client {
+            firstname
+            lastname
+        }
+    }
+}
+
+mutation CREATE_BANK_ACCOUNT{
+    createBankAccount(input: {lastname: "", firstname: ""}){
+        id,
+        currency,
+        client {
+            firstname
+            lastname
+        }
+    }
+}

@@ -1,0 +1,7 @@
+type BankAccount {
+    # Identifaint
+    id: ID!
+    client: Client!
+    currency: Currency
+    assets: [Asset!]
+}
