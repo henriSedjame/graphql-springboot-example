@@ -2,6 +2,8 @@ package io.github.hsedjame.graphqlspringbootexample.resolvers.query;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.relay.*;
+import graphql.schema.DataFetchingEnvironment;
+import graphql.schema.SelectedField;
 import io.github.hsedjame.graphqlspringbootexample.domain.BankAccount;
 import io.github.hsedjame.graphqlspringbootexample.domain.Currency;
 import io.github.hsedjame.graphqlspringbootexample.domain.repository.BankAccountRepository;
@@ -11,13 +13,25 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Component
 public record BankAccountQueryResolver(BankAccountRepository bankAccountRepository) implements GraphQLQueryResolver {
 
-    public BankAccount bankAccount(UUID id){
-        return new BankAccount(UUID.randomUUID(), Currency.EUR);
+    private static final Logger logger = Logger.getLogger(BankAccountQueryResolver.class.getName());
+
+    public BankAccount bankAccount(UUID id, DataFetchingEnvironment environment){
+
+        final String requestedFields = environment.getSelectionSet().getFields()
+                .stream()
+                .map(SelectedField::getName)
+                .distinct()
+                .collect(Collectors.joining(", "));
+
+        logger.info(String.format("Requested fields : [%s]", requestedFields));
+
+        return new BankAccount(id, Currency.EUR);
     }
 
     public Connection<BankAccount> bankAccounts(int limit, @Nullable String cursor){

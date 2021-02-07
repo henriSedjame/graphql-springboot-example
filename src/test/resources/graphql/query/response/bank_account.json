@@ -1,0 +1,12 @@
+{
+  "data" : {
+    "bankAccount": {
+      "id": "2fe49255-234d-4e41-b47d-ba2556700edb",
+      "currency": "EUR",
+      "client": {
+        "firstname": "",
+        "lastname": ""
+      }
+    }
+  }
+}
