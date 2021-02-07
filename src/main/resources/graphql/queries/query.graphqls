@@ -1,3 +1,4 @@
 type Query {
     bankAccount(id: ID): BankAccount
+    bankAccounts(limit: Int!, after: String): BankAccountConnection @connection (for: "BankAccount")
 }

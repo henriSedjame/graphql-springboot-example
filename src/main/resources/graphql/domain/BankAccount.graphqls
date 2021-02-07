@@ -4,4 +4,5 @@ type BankAccount {
     client: Client!
     currency: Currency
     assets: [Asset!]
+    balance: Float
 }

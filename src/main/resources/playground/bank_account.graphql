@@ -19,3 +19,22 @@ mutation CREATE_BANK_ACCOUNT{
         }
     }
 }
+
+query GET_BANK_ACCOUNTS {
+    bankAccounts(limit: 2, after:"") {
+        edges {
+            cursor
+            node {
+                id
+                currency
+                balance
+            }
+        }
+        pageInfo {
+            hasPreviousPage
+            hasNextPage
+            startCursor
+            endCursor
+        }
+    }
+}

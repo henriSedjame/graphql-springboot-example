@@ -13,7 +13,7 @@ import java.util.UUID;
 public class BankAccountMutationResolver implements GraphQLMutationResolver {
 
     public BankAccount createBankAccount(CreateBankAccountInput input){
-        return new BankAccount(UUID.randomUUID(), new Client(input.firstname(), input.lastname()), Currency.EUR, null);
+        return new BankAccount(UUID.randomUUID(), new Client(input.firstname(), input.lastname()), Currency.EUR, null, null);
     }
 
 }
